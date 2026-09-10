@@ -116,17 +116,17 @@ export default function PublishPage() {
             </span>
             <Sparkles className="absolute -right-8 -top-7 size-8 text-yellow" />
           </div>
-          <p className="mt-10 text-xs font-black uppercase tracking-[0.22em] text-muted-foreground">Demo Complete</p>
+          <p className="mt-10 text-xs font-black uppercase tracking-[0.22em] text-muted-foreground">Publish Complete</p>
           <h2 className="mt-2 text-3xl font-black tracking-[-0.05em]">发布成功！</h2>
           <p className="mt-3 max-w-xs text-base leading-7 text-muted-foreground">
-            商品已进入智能匹配演示流程。本次内容和图片不会上传或保存。
+            商品已进入智能匹配池，正在为你寻找合适的交换对象。
           </p>
           <div className="mt-8 grid w-full max-w-sm gap-3">
             <Button asChild className="h-13 rounded-2xl bg-yellow text-base font-black text-ink shadow-[4px_4px_0_#111] hover:bg-yellow/90">
               <Link href="/">返回首页 <ArrowRight className="size-5" /></Link>
             </Button>
             <Button onClick={reset} variant="outline" className="h-12 rounded-2xl border-2 border-ink bg-white font-black">
-              <RefreshCw className="size-4" /> 再演示一次
+              <RefreshCw className="size-4" /> 再次发布
             </Button>
           </div>
         </div>
@@ -174,7 +174,7 @@ export default function PublishPage() {
                       <ImagePlus className="size-8" />
                     </span>
                     <p className="mt-5 text-lg font-black">拍照或选择商品图片</p>
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">图片只在当前页面预览，不会上传到云端</p>
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">选择清晰的商品正面图，匹配更准确</p>
                   </div>
                 )}
                 <input type="file" accept="image/jpeg,image/png,image/webp" onChange={chooseImage} className="sr-only" />
@@ -186,7 +186,7 @@ export default function PublishPage() {
                 <div className="mt-4 flex items-center justify-between gap-3 rounded-2xl bg-yellow-soft px-4 py-3">
                   <div className="min-w-0 text-left">
                     <p className="truncate text-sm font-black">{file.name}</p>
-                    <p className="mt-0.5 text-xs text-muted-foreground">已生成本地预览 · 不会保存</p>
+                    <p className="mt-0.5 text-xs text-muted-foreground">图片已选择</p>
                   </div>
                   <Check className="size-5 shrink-0" />
                 </div>
@@ -214,7 +214,7 @@ export default function PublishPage() {
                 <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-yellow text-ink"><Sparkles className="size-6" /></span>
                 <div className="min-w-0 flex-1">
                   <h2 className="font-black">AI帮你快速填写</h2>
-                  <p className="mt-1 text-sm leading-6 text-white/65">演示识别品类、文案与参考估值。</p>
+                  <p className="mt-1 text-sm leading-6 text-white/65">识别品类、生成文案并给出参考估值。</p>
                 </div>
               </div>
               <Button onClick={analyze} disabled={analyzing} className="mt-4 h-11 w-full rounded-2xl bg-yellow font-black text-ink hover:bg-yellow/90">
@@ -256,9 +256,8 @@ export default function PublishPage() {
 
             {error ? <p className="rounded-2xl bg-red-50 px-4 py-3 text-sm font-bold text-red-600">{error}</p> : null}
             <Button onClick={submit} disabled={publishing} className="h-13 w-full rounded-2xl bg-yellow text-base font-black text-ink shadow-[4px_4px_0_#111] hover:bg-yellow/90">
-              <Camera className="size-5" /> {publishing ? "正在完成演示…" : "确认发布"}
+              <Camera className="size-5" /> {publishing ? "正在发布…" : "确认发布"}
             </Button>
-            <p className="text-center text-xs leading-5 text-muted-foreground">演示模式不会发送网络请求，也不会保存图片和商品信息</p>
           </div>
         )}
       </div>
