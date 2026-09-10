@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { Viewport } from "next";
 import "./globals.css";
+import { AppEntryGate } from "@/components/app-entry-gate";
 
 export const metadata: Metadata = {
   title: "换么｜不想卖？那就换。",
@@ -33,7 +34,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <AppEntryGate>{children}</AppEntryGate>
+      </body>
     </html>
   );
 }
