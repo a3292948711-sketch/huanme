@@ -339,12 +339,16 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-md grid-cols-5 px-2">
           <MobileNavItem icon={Home} label="首页" active />
           <MobileNavItem icon={Sparkles} label="换圈" />
-          <button className="group -mt-7 flex flex-col items-center gap-1 text-xs font-bold">
+          <Link
+            href="/publish"
+            className="group -mt-7 flex flex-col items-center gap-1 text-xs font-bold"
+            aria-label="发布闲置"
+          >
             <span className="grid size-14 place-items-center rounded-full border-2 border-ink bg-yellow shadow-[3px_3px_0_#111] transition group-active:translate-x-0.5 group-active:translate-y-0.5 group-active:shadow-none">
               <Plus className="size-7" strokeWidth={2.5} />
             </span>
             发布
-          </button>
+          </Link>
           <MobileNavItem icon={MessageCircle} label="消息" badge="3" />
           <MobileNavItem icon={UserRound} label="我的" />
         </div>
