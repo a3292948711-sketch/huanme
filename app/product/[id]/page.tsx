@@ -13,6 +13,7 @@ import {
 import { MobileShell } from "@/components/mobile-shell";
 import { Button } from "@/components/ui/button";
 import { demoProducts, money } from "@/lib/demo-data";
+import { UserAvatar } from "@/components/user-avatar";
 
 export default function ProductDetailPage() {
   const params = useParams<{ id: string }>();
@@ -54,9 +55,7 @@ export default function ProductDetailPage() {
 
         <section className="m-4 rounded-3xl border border-border bg-card p-5 sm:m-6">
           <div className="flex items-center gap-3">
-            <div className="grid size-12 place-items-center rounded-full bg-ink text-lg font-black text-yellow">
-              {product.seller.slice(0, 1)}
-            </div>
+            <UserAvatar name={product.seller} className="size-12" />
             <div className="min-w-0 flex-1">
               <p className="flex items-center gap-1.5 font-black">
                 {product.seller} <BadgeCheck className="size-4 fill-yellow" />

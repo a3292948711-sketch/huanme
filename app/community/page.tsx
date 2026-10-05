@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Heart, MessageCircle, MoreHorizontal, Plus, Share2 } from "lucide-react";
 import { MobileShell } from "@/components/mobile-shell";
+import { UserAvatar } from "@/components/user-avatar";
 
 const posts = [
   {
@@ -43,7 +44,7 @@ export default function CommunityPage() {
         {posts.map((post) => (
           <article key={post.id} className="overflow-hidden rounded-3xl border border-border bg-card">
             <div className="flex items-center gap-3 p-4">
-              <span className="grid size-10 place-items-center rounded-full bg-ink font-black text-yellow">{post.avatar}</span>
+              <UserAvatar name={post.author} />
               <div className="min-w-0 flex-1"><p className="font-black">{post.author}</p><p className="text-xs text-muted-foreground">{post.time}</p></div>
               <button aria-label="更多"><MoreHorizontal className="size-5" /></button>
             </div>

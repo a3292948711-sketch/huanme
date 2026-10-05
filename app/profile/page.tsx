@@ -12,6 +12,17 @@ import {
   WalletCards,
 } from "lucide-react";
 import { MobileShell } from "@/components/mobile-shell";
+import { UserAvatar } from "@/components/user-avatar";
+
+const creditScore = 788;
+const creditLevels = [
+  { label: "低", color: "#fb7185" },
+  { label: "正常", color: "#fb923c" },
+  { label: "良好", color: "#facc15" },
+  { label: "高", color: "#34d399" },
+  { label: "极高", color: "#38bdf8" },
+];
+const creditLevelIndex = Math.min(4, Math.floor(creditScore / 200));
 
 const shortcuts = [
   { label: "我的发布", value: "3", icon: Package },
@@ -26,12 +37,24 @@ export default function ProfilePage() {
       <div className="space-y-5 p-4 sm:p-6">
         <section className="relative overflow-hidden rounded-[28px] border-2 border-ink bg-ink p-5 text-white shadow-[5px_5px_0_#ffd600]">
           <div className="flex items-center gap-4">
-            <span className="grid size-16 place-items-center rounded-full border-2 border-yellow bg-white text-2xl font-black text-ink">换</span>
+            <UserAvatar name="换么体验官" className="size-16 border-2 border-yellow" />
             <div><h2 className="text-xl font-black">换么体验官</h2><p className="mt-1 text-sm text-white/60">上海 · 已完成12次交换</p></div>
           </div>
-          <div className="mt-5 flex items-center justify-between rounded-2xl bg-white/10 p-4">
-            <div><p className="text-xs text-white/60">循环信用</p><p className="mt-1 text-2xl font-black text-yellow">优秀 · 788</p></div>
-            <ShieldCheck className="size-10 text-yellow" />
+          <div className="mt-5 rounded-2xl bg-white/10 p-4">
+            <div className="flex items-center justify-between">
+              <div><p className="text-xs text-white/60">循环信用</p><p className="mt-1 text-2xl font-black text-yellow">{creditLevels[creditLevelIndex].label} · {creditScore}</p></div>
+              <ShieldCheck className="size-10 text-yellow" />
+            </div>
+            <div className="relative mt-5" role="progressbar" aria-label="信誉分" aria-valuemin={0} aria-valuemax={1000} aria-valuenow={creditScore} aria-valuetext={`${creditScore}分，${creditLevels[creditLevelIndex].label}`}>
+              <div className="grid h-2.5 grid-cols-5 gap-1 overflow-hidden rounded-full">
+                {creditLevels.map((level) => <span key={level.label} style={{ backgroundColor: level.color }} />)}
+              </div>
+              <span className="absolute -top-1.5 h-5 w-1.5 -translate-x-1/2 rounded-full bg-white ring-2 ring-ink" style={{ left: `${creditScore / 10}%` }} />
+            </div>
+            <div className="mt-3 grid grid-cols-5 text-center text-xs">
+              {creditLevels.map((level, index) => <span key={level.label} className={index === creditLevelIndex ? "font-black text-white" : "text-white/50"}>{level.label}</span>)}
+            </div>
+            <p className="mt-3 text-xs text-white/60">距离极高信誉还差 {800 - creditScore} 分</p>
           </div>
         </section>
 

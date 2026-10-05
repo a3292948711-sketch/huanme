@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NavigationIcon } from "@/components/navigation-icon";
+import { demoProducts, money } from "@/lib/demo-data";
 
 const categories = [
   { label: "数码", icon: Laptop },
@@ -30,65 +31,26 @@ const categories = [
   { label: "全部", icon: Grid2X2 },
 ];
 
-const products = [
-  {
-    id: 1,
-    title: "Sony WH-1000XM5 降噪耳机",
-    image:
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=82",
-    value: "¥1,680",
-    condition: "95新",
-    want: "Switch OLED / 补差可聊",
-    match: 96,
-    city: "上海",
-  },
-  {
-    id: 2,
-    title: "PlayStation 5 光驱版",
-    image:
-      "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=900&q=82",
-    value: "¥2,899",
-    condition: "9成新",
-    want: "相机 / 掌机",
-    match: 91,
-    city: "杭州",
-  },
-  {
-    id: 3,
-    title: "机械键盘 透明客制化套件",
-    image:
-      "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=900&q=82",
-    value: "¥620",
-    condition: "准新",
-    want: "潮玩 / 耳机",
-    match: 88,
-    city: "南京",
-  },
-  {
-    id: 4,
-    title: "复古银色数码相机",
-    image:
-      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=82",
-    value: "¥2,350",
-    condition: "收藏级",
-    want: "PS5 / 镜头",
-    match: 84,
-    city: "苏州",
-  },
-];
+const products = demoProducts.map((product) => ({ ...product, value: money(product.value) }));
+const cardGradients: Record<string, string> = {
+  数码: "linear-gradient(145deg, #ffffff 0%, #eef5ff 60%, #e6edff 100%)",
+  游戏: "linear-gradient(145deg, #ffffff 0%, #f3efff 60%, #e8e0ff 100%)",
+  潮玩: "linear-gradient(145deg, #ffffff 0%, #fff4e4 60%, #ffe8cc 100%)",
+  穿搭: "linear-gradient(145deg, #ffffff 0%, #eefaf2 60%, #dff3e8 100%)",
+};
 
 export default function HomePage() {
   const [query, setQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState("数码");
+  const [activeCategory, setActiveCategory] = useState("全部");
   const [liked, setLiked] = useState<number[]>([]);
 
   const visibleProducts = useMemo(() => {
     const keyword = query.trim().toLowerCase();
-    if (!keyword) return products;
     return products.filter((product) =>
-      `${product.title}${product.want}${product.city}`.toLowerCase().includes(keyword),
-    );
-  }, [query]);
+      (activeCategory === "全部" || product.category === activeCategory) &&
+      (!keyword || `${product.title}${product.want}${product.city}${product.category}`.toLowerCase().includes(keyword)),
+    ).sort((left, right) => right.match - left.match);
+  }, [query, activeCategory]);
 
   function toggleLike(id: number) {
     setLiked((items) =>
@@ -224,7 +186,7 @@ export default function HomePage() {
                     逛分类
                   </h2>
                 </div>
-                <button className="text-sm font-bold underline decoration-yellow decoration-4 underline-offset-4">
+                <button onClick={() => { setActiveCategory("全部"); setQuery(""); }} className="text-sm font-bold underline decoration-yellow decoration-4 underline-offset-4">
                   查看全部
                 </button>
               </div>
@@ -235,6 +197,7 @@ export default function HomePage() {
                     <button
                       key={label}
                       onClick={() => setActiveCategory(label)}
+                      aria-pressed={active}
                       className={`flex min-w-0 flex-col items-center gap-2 rounded-2xl border px-1 py-3 text-xs font-bold transition active:scale-95 sm:text-sm ${
                         active
                           ? "border-ink bg-ink text-white"
@@ -256,7 +219,7 @@ export default function HomePage() {
                     为你匹配
                   </h2>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    按你的想换清单和信用偏好排序
+                    {activeCategory === "全部" ? "按你的想换清单和信用偏好排序" : `${activeCategory}好物 · 按匹配度为你推荐`}
                   </p>
                 </div>
                 <span className="rounded-full bg-yellow-soft px-3 py-1.5 text-xs font-black">
@@ -292,7 +255,7 @@ export default function HomePage() {
                           {product.match}% 匹配
                         </span>
                       </div>
-                      <div className="p-3.5 sm:p-4">
+                      <div className="p-3.5 sm:p-4" style={{ background: cardGradients[product.category] }}>
                         <div className="flex items-center gap-2 text-[11px] font-bold text-muted-foreground">
                           <span>{product.condition}</span>
                           <span className="size-1 rounded-full bg-border" />
@@ -324,10 +287,10 @@ export default function HomePage() {
                   <Search className="mx-auto size-8 text-muted-foreground" />
                   <p className="mt-3 font-black">没有找到相关商品</p>
                   <button
-                    onClick={() => setQuery("")}
+                    onClick={() => { setQuery(""); setActiveCategory("全部"); }}
                     className="mt-2 text-sm font-bold text-muted-foreground underline"
                   >
-                    清除搜索词
+                    查看全部商品
                   </button>
                 </div>
               )}

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ImagePlus, Send, ShieldCheck } from "lucide-react";
 import { MobileShell } from "@/components/mobile-shell";
 import { Button } from "@/components/ui/button";
+import { UserAvatar } from "@/components/user-avatar";
 
 type ChatMessage = { id: number; mine: boolean; body: string; time: string };
 
@@ -39,7 +40,7 @@ export default function MessagesPage() {
       title="阿泽的装备库"
       backHref="/"
       hideNav
-      action={<span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black text-emerald-700">在线</span>}
+      action={<div className="flex items-center gap-2"><UserAvatar name="阿泽的装备库" className="size-9" /><span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black text-emerald-700">在线</span></div>}
     >
       <div className="border-b border-border bg-card p-3">
         <Link href="/match?target=1" className="mx-auto flex max-w-xl items-center gap-3 rounded-2xl bg-yellow-soft p-3">
@@ -55,11 +56,13 @@ export default function MessagesPage() {
       <section className="mx-auto flex min-h-[calc(100dvh-190px)] max-w-xl flex-col gap-4 px-4 py-6 pb-28">
         <p className="text-center text-xs text-muted-foreground">今天 10:28</p>
         {messages.map((message) => (
-          <div key={message.id} className={`flex ${message.mine ? "justify-end" : "justify-start"}`}>
-            <div className={`max-w-[82%] rounded-3xl px-4 py-3 ${message.mine ? "rounded-br-md bg-yellow text-ink" : "rounded-bl-md border border-border bg-card"}`}>
+          <div key={message.id} className={`flex items-start gap-2.5 ${message.mine ? "justify-end" : "justify-start"}`}>
+            {!message.mine ? <UserAvatar name="阿泽的装备库" className="size-10" /> : null}
+            <div className={`min-w-0 max-w-[calc(100%-3.25rem)] rounded-3xl px-4 py-3 ${message.mine ? "rounded-br-md bg-yellow text-ink" : "rounded-bl-md border border-border bg-card"}`}>
               <p className="text-sm font-medium leading-6">{message.body}</p>
               <p className={`mt-1 text-[10px] ${message.mine ? "text-ink/55" : "text-muted-foreground"}`}>{message.time}</p>
             </div>
+            {message.mine ? <UserAvatar name="换么体验官" className="size-10" /> : null}
           </div>
         ))}
       </section>
