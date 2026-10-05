@@ -20,6 +20,7 @@ import {
   Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { NavigationIcon } from "@/components/navigation-icon";
 
 const categories = [
   { label: "数码", icon: Laptop },
@@ -344,8 +345,8 @@ export default function HomePage() {
             className="group -mt-7 flex flex-col items-center gap-1 text-xs font-bold"
             aria-label="发布闲置"
           >
-            <span className="grid size-14 place-items-center rounded-full border-2 border-ink bg-yellow shadow-[3px_3px_0_#111] transition group-active:translate-x-0.5 group-active:translate-y-0.5 group-active:shadow-none">
-              <Plus className="size-7" strokeWidth={2.5} />
+            <span className="grid size-14 place-items-center rounded-full bg-white shadow-[0_2px_12px_#f5cc1933] transition group-active:scale-95">
+              <NavigationIcon label="发布" className="size-12" />
             </span>
             发布
           </Link>
@@ -369,7 +370,6 @@ function Brand() {
 }
 
 function DesktopNavItem({
-  icon: Icon,
   label,
   active,
   badge,
@@ -386,7 +386,7 @@ function DesktopNavItem({
         active ? "bg-yellow text-ink" : "hover:bg-muted"
       }`}
     >
-      <Icon className="size-5" />
+      <NavigationIcon label={label} className="size-8 shrink-0" />
       <span>{label}</span>
       {badge ? (
         <span className="ml-auto grid size-5 place-items-center rounded-full bg-ink text-[10px] text-yellow">
@@ -398,7 +398,6 @@ function DesktopNavItem({
 }
 
 function MobileNavItem({
-  icon: Icon,
   label,
   active,
   badge,
@@ -410,8 +409,8 @@ function MobileNavItem({
 }) {
   return (
     <Link href={label === "首页" ? "/" : label === "换圈" ? "/community" : label === "消息" ? "/messages" : "/profile"} className={`relative flex flex-col items-center gap-1 py-1 text-[11px] font-bold ${active ? "text-ink" : "text-muted-foreground"}`}>
-      <span className={`grid size-7 place-items-center rounded-lg ${active ? "bg-yellow" : ""}`}>
-        <Icon className="size-[18px]" strokeWidth={active ? 2.7 : 2} />
+      <span className={`grid size-10 place-items-center rounded-xl ${active ? "bg-yellow/10" : ""}`}>
+        <NavigationIcon label={label} className="size-9" />
       </span>
       {label}
       {badge ? (

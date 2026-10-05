@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { NavigationIcon } from "@/components/navigation-icon";
 import {
   ArrowLeft,
   Home,
@@ -62,13 +63,13 @@ function BottomNav() {
   return (
     <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-card/96 pb-[max(8px,env(safe-area-inset-bottom))] pt-2 backdrop-blur-xl" aria-label="底部导航">
       <div className="mx-auto grid max-w-md grid-cols-5 px-2">
-        {navItems.map(({ href, label, icon: Icon, primary }) => {
+        {navItems.map(({ href, label, primary }) => {
           const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
           if (primary) {
             return (
               <Link key={href} href={href} className="group -mt-7 flex flex-col items-center gap-1 text-xs font-bold">
-                <span className="grid size-14 place-items-center rounded-full border-2 border-ink bg-yellow shadow-[3px_3px_0_#111] transition group-active:translate-x-0.5 group-active:translate-y-0.5 group-active:shadow-none">
-                  <Icon className="size-7" strokeWidth={2.5} />
+                <span className="grid size-14 place-items-center rounded-full bg-white shadow-[0_2px_12px_#f5cc1933] transition group-active:scale-95">
+                  <NavigationIcon label={label} className="size-12" />
                 </span>
                 {label}
               </Link>
@@ -80,8 +81,8 @@ function BottomNav() {
               href={href}
               className={`flex flex-col items-center gap-1 py-1 text-[11px] font-bold ${active ? "text-ink" : "text-muted-foreground"}`}
             >
-              <span className={`grid size-7 place-items-center rounded-lg ${active ? "bg-yellow" : ""}`}>
-                <Icon className="size-[18px]" strokeWidth={active ? 2.7 : 2} />
+              <span className={`grid size-10 place-items-center rounded-xl ${active ? "bg-yellow/10" : ""}`}>
+                <NavigationIcon label={label} className="size-9" />
               </span>
               {label}
             </Link>
