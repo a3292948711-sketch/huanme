@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { ArrowLeftRight, Check, KeyRound, Phone, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { BrandLogo } from "@/components/brand-logo";
 
 const slogans = [
   "不想卖，那就换",
@@ -138,7 +139,7 @@ function AuthScreen({ onComplete }: { onComplete: () => void }) {
     completeWith("登录 / 注册成功");
   }
 
-  function quickLogin(provider: "微信" | "Apple") {
+  function quickLogin(provider: "微信" | "QQ") {
     if (!requireAgreement()) return;
     completeWith(`${provider}登录成功`);
   }
@@ -154,9 +155,7 @@ function AuthScreen({ onComplete }: { onComplete: () => void }) {
         <div className="absolute -right-20 -top-24 size-56 rounded-full border-[28px] border-yellow/35" />
 
         <header className="relative">
-          <span className="grid size-14 place-items-center rounded-[18px] bg-yellow">
-            <ArrowLeftRight className="size-8" strokeWidth={3} />
-          </span>
+          <BrandLogo />
           <h1 className="mt-7 text-[2rem] font-black tracking-[-0.06em]">欢迎来到换么</h1>
           <p className="mt-2 text-sm text-muted-foreground">登录后开启你的第一次交换</p>
         </header>
@@ -236,7 +235,7 @@ function AuthScreen({ onComplete }: { onComplete: () => void }) {
 
         <div className="grid grid-cols-2 gap-4">
           <button type="button" onClick={() => quickLogin("微信")} disabled={submitting} className="h-12 rounded-full bg-yellow text-sm font-black disabled:opacity-60">微信</button>
-          <button type="button" onClick={() => quickLogin("Apple")} disabled={submitting} className="h-12 rounded-full bg-ink text-sm font-black text-white disabled:opacity-60">Apple</button>
+          <button type="button" onClick={() => quickLogin("QQ")} disabled={submitting} className="h-12 rounded-full bg-ink text-sm font-black text-white disabled:opacity-60">QQ</button>
         </div>
 
         <button

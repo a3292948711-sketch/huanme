@@ -92,7 +92,7 @@ export function MatchBuilder({ targetId }: { targetId: number }) {
       <MobileShell title="交换申请" backHref={`/product/${target.id}`} hideNav>
         <div className="grid min-h-[calc(100dvh-64px)] place-items-center p-6 text-center">
           <div>
-            <span className="mx-auto grid size-20 place-items-center rounded-full border-2 border-ink bg-yellow shadow-[5px_5px_0_#111]">
+            <span className="mx-auto grid size-20 place-items-center rounded-full border-2 border-ink bg-yellow shadow-[5px_5px_0_#b8b8b8]">
               <Check className="size-10" strokeWidth={3} />
             </span>
             <h2 className="mt-7 text-2xl font-black">
@@ -143,7 +143,7 @@ export function MatchBuilder({ targetId }: { targetId: number }) {
                 <button
                   key={item.id}
                   onClick={() => setSelectedId(item.id)}
-                  className={`flex gap-3 rounded-3xl border-2 p-3 text-left ${active ? "border-ink bg-yellow-soft shadow-[3px_3px_0_#111]" : "border-border bg-card"}`}
+                  className={`flex gap-3 rounded-3xl border-2 p-3 text-left ${active ? "border-ink bg-yellow-soft shadow-[3px_3px_0_#b8b8b8]" : "border-border bg-card"}`}
                 >
                   <img src={item.image} alt={item.title} className="size-20 rounded-2xl object-cover" />
                   <div className="min-w-0 flex-1 py-1">
@@ -157,7 +157,7 @@ export function MatchBuilder({ targetId }: { targetId: number }) {
           </div>
         </section>
 
-        <section className="rounded-3xl border-2 border-ink bg-yellow p-5 shadow-[4px_4px_0_#111]">
+        <section className="rounded-3xl border-2 border-ink bg-yellow p-5 shadow-[4px_4px_0_#b8b8b8]">
           <div className="flex items-center gap-2"><Sparkles className="size-5" /><h2 className="font-black">AI补差建议</h2></div>
           <p className="mt-3 text-3xl font-black">{adjustment < 0 ? `对方补 ${money(Math.abs(adjustment))}` : adjustment > 0 ? `我补 ${money(adjustment)}` : "纯物交换"}</p>
           <p className="mt-2 text-sm font-medium">综合近期成交价、成色和市场热度，建议差价区间为 -¥180 至 ¥50。</p>
@@ -173,12 +173,12 @@ export function MatchBuilder({ targetId }: { targetId: number }) {
         <section>
           <h2 className="text-lg font-black">履约方式</h2>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            <button onClick={() => setMode("inspection")} className={`rounded-3xl border-2 p-4 text-left ${mode === "inspection" ? "border-ink bg-card shadow-[3px_3px_0_#111]" : "border-border bg-card"}`}>
+            <button onClick={() => setMode("inspection")} className={`rounded-3xl border-2 p-4 text-left ${mode === "inspection" ? "border-ink bg-card shadow-[3px_3px_0_#b8b8b8]" : "border-border bg-card"}`}>
               <ShieldCheck className="size-6 text-emerald-600" />
               <p className="mt-3 font-black">平台担保 + 验货</p>
               <p className="mt-1 text-xs leading-5 text-muted-foreground">双方先寄往平台，通过后再互发</p>
             </button>
-            <button onClick={() => setMode("direct")} className={`rounded-3xl border-2 p-4 text-left ${mode === "direct" ? "border-ink bg-card shadow-[3px_3px_0_#111]" : "border-border bg-card"}`}>
+            <button onClick={() => setMode("direct")} className={`rounded-3xl border-2 p-4 text-left ${mode === "direct" ? "border-ink bg-card shadow-[3px_3px_0_#b8b8b8]" : "border-border bg-card"}`}>
               <Truck className="size-6 text-blue-600" />
               <p className="mt-3 font-black">双方直接寄送</p>
               <p className="mt-1 text-xs leading-5 text-muted-foreground">适合低价值商品或同城面交</p>

@@ -111,7 +111,7 @@ export default function PublishPage() {
       <MobileShell title="发布完成" hideNav>
         <div className="flex min-h-[calc(100dvh-4rem)] flex-col items-center justify-center px-6 pb-16 text-center">
           <div className="relative">
-            <span className="grid size-28 rotate-3 place-items-center rounded-[34px] border-[3px] border-ink bg-yellow shadow-[7px_7px_0_#111]">
+            <span className="grid size-28 rotate-3 place-items-center rounded-[34px] border-[3px] border-ink bg-yellow shadow-[7px_7px_0_#b8b8b8]">
               <Check className="size-14" strokeWidth={3} />
             </span>
             <Sparkles className="absolute -right-8 -top-7 size-8 text-yellow" />
@@ -122,7 +122,7 @@ export default function PublishPage() {
             商品已进入智能匹配池，正在为你寻找合适的交换对象。
           </p>
           <div className="mt-8 grid w-full max-w-sm gap-3">
-            <Button asChild className="h-13 rounded-2xl bg-yellow text-base font-black text-ink shadow-[4px_4px_0_#111] hover:bg-yellow/90">
+            <Button asChild className="h-13 rounded-2xl bg-yellow text-base font-black text-ink shadow-[4px_4px_0_#b8b8b8] hover:bg-yellow/90">
               <Link href="/">返回首页 <ArrowRight className="size-5" /></Link>
             </Button>
             <Button onClick={reset} variant="outline" className="h-12 rounded-2xl border-2 border-ink bg-white font-black">
@@ -164,13 +164,13 @@ export default function PublishPage() {
 
         {step === 1 ? (
           <div>
-            <section className="rounded-[28px] border-2 border-ink bg-card p-4 shadow-[5px_5px_0_#111]">
+            <section className="rounded-[28px] border-2 border-ink bg-card p-4 shadow-[5px_5px_0_#b8b8b8]">
               <label className="relative grid aspect-[4/3] cursor-pointer place-items-center overflow-hidden rounded-[22px] border-2 border-dashed border-ink bg-muted">
                 {preview ? (
                   <img src={preview} alt="待发布商品的本地预览" className="h-full w-full object-cover" />
                 ) : (
                   <div className="px-5 text-center">
-                    <span className="mx-auto grid size-16 place-items-center rounded-2xl border-2 border-ink bg-yellow shadow-[3px_3px_0_#111]">
+                    <span className="mx-auto grid size-16 place-items-center rounded-2xl border-2 border-ink bg-yellow shadow-[3px_3px_0_#b8b8b8]">
                       <ImagePlus className="size-8" />
                     </span>
                     <p className="mt-5 text-lg font-black">拍照或选择商品图片</p>
@@ -179,7 +179,7 @@ export default function PublishPage() {
                 )}
                 <input type="file" accept="image/jpeg,image/png,image/webp" onChange={chooseImage} className="sr-only" />
                 {preview ? (
-                  <span className="absolute bottom-3 right-3 rounded-full border-2 border-ink bg-white px-3 py-2 text-xs font-black shadow-[2px_2px_0_#111]">更换图片</span>
+                  <span className="absolute bottom-3 right-3 rounded-full border-2 border-ink bg-white px-3 py-2 text-xs font-black shadow-[2px_2px_0_#b8b8b8]">更换图片</span>
                 ) : null}
               </label>
               {file ? (
@@ -194,13 +194,13 @@ export default function PublishPage() {
             </section>
 
             {error ? <p className="mt-4 rounded-2xl bg-red-50 px-4 py-3 text-sm font-bold text-red-600">{error}</p> : null}
-            <Button onClick={goNext} className="mt-6 h-13 w-full rounded-2xl bg-yellow text-base font-black text-ink shadow-[4px_4px_0_#111] hover:bg-yellow/90">
+            <Button onClick={goNext} className="mt-6 h-13 w-full rounded-2xl bg-yellow text-base font-black text-ink shadow-[4px_4px_0_#b8b8b8] hover:bg-yellow/90">
               下一步 <ArrowRight className="size-5" />
             </Button>
           </div>
         ) : (
           <div className="space-y-5">
-            <section className="flex items-center gap-4 rounded-3xl border-2 border-ink bg-card p-3 shadow-[4px_4px_0_#111]">
+            <section className="flex items-center gap-4 rounded-3xl border-2 border-ink bg-card p-3 shadow-[4px_4px_0_#b8b8b8]">
               <img src={preview} alt="商品图片缩略图" className="size-20 rounded-2xl object-cover" />
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-black uppercase tracking-[0.12em] text-muted-foreground">已选图片</p>
@@ -255,7 +255,7 @@ export default function PublishPage() {
             </section>
 
             {error ? <p className="rounded-2xl bg-red-50 px-4 py-3 text-sm font-bold text-red-600">{error}</p> : null}
-            <Button onClick={submit} disabled={publishing} className="h-13 w-full rounded-2xl bg-yellow text-base font-black text-ink shadow-[4px_4px_0_#111] hover:bg-yellow/90">
+            <Button onClick={submit} disabled={publishing} className="h-13 w-full rounded-2xl bg-yellow text-base font-black text-ink shadow-[4px_4px_0_#b8b8b8] hover:bg-yellow/90">
               <Camera className="size-5" /> {publishing ? "正在发布…" : "确认发布"}
             </Button>
           </div>

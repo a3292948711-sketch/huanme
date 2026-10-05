@@ -15,7 +15,7 @@ export default function OrdersPage() {
   return (
     <MobileShell title="订单与物流" backHref="/profile">
       <div className="space-y-5 p-4 sm:p-6">
-        <section className="rounded-3xl border-2 border-ink bg-yellow p-5 shadow-[4px_4px_0_#111]">
+        <section className="rounded-3xl border-2 border-ink bg-yellow p-5 shadow-[4px_4px_0_#b8b8b8]">
           <div className="flex items-center gap-3">
             <span className="grid size-12 place-items-center rounded-2xl bg-ink text-yellow"><Truck className="size-6" /></span>
             <div>

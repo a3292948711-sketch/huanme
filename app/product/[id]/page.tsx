@@ -68,7 +68,7 @@ export default function ProductDetailPage() {
           </div>
         </section>
 
-        <section className="m-4 rounded-3xl border-2 border-ink bg-yellow p-5 shadow-[4px_4px_0_#111] sm:m-6">
+        <section className="m-4 rounded-3xl border-2 border-ink bg-yellow p-5 shadow-[4px_4px_0_#b8b8b8] sm:m-6">
           <div className="flex items-center gap-2">
             <Sparkles className="size-5" />
             <h3 className="font-black">卖家想换</h3>

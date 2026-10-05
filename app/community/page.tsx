@@ -35,14 +35,20 @@ export default function CommunityPage() {
   return (
     <MobileShell
       title="换圈"
-      action={<button className="grid size-10 place-items-center rounded-full border-2 border-ink bg-yellow shadow-[2px_2px_0_#111]" aria-label="发布动态"><Plus className="size-5" /></button>}
+      action={<button className="grid size-10 place-items-center rounded-full border-2 border-ink bg-yellow shadow-[2px_2px_0_#b8b8b8]" aria-label="发布动态"><Plus className="size-5" /></button>}
     >
       <div className="sticky top-16 z-30 flex gap-6 border-b border-border bg-background/95 px-4 py-3 text-sm font-black backdrop-blur sm:px-6">
         <button className="border-b-4 border-yellow pb-2">推荐</button><button className="pb-2 text-muted-foreground">关注</button><button className="pb-2 text-muted-foreground">同城</button><button className="pb-2 text-muted-foreground">潮玩</button>
       </div>
       <div className="space-y-4 p-4 sm:p-6">
         {posts.map((post) => (
-          <article key={post.id} className="overflow-hidden rounded-3xl border border-border bg-card">
+          <article
+            key={post.id}
+            className="overflow-hidden rounded-3xl border border-border"
+            style={{ background: post.id === 1
+              ? "linear-gradient(135deg, #fffdf3 0%, #fff0ca 55%, #ffe5d8 100%)"
+              : "linear-gradient(135deg, #f5faff 0%, #e8efff 55%, #efe2fa 100%)" }}
+          >
             <div className="flex items-center gap-3 p-4">
               <UserAvatar name={post.author} />
               <div className="min-w-0 flex-1"><p className="font-black">{post.author}</p><p className="text-xs text-muted-foreground">{post.time}</p></div>

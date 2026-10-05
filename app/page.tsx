@@ -22,6 +22,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { NavigationIcon } from "@/components/navigation-icon";
 import { demoProducts, money } from "@/lib/demo-data";
+import { BrandLogo } from "@/components/brand-logo";
 
 const categories = [
   { label: "数码", icon: Laptop },
@@ -135,7 +136,7 @@ export default function HomePage() {
               </button>
             </div>
             <div className="mt-4 flex gap-2 lg:mt-0">
-              <label className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl border-2 border-ink bg-card px-4 py-3 shadow-[3px_3px_0_#111] focus-within:shadow-[1px_1px_0_#111]">
+              <label className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl border-2 border-ink bg-card px-4 py-3 shadow-[3px_3px_0_#b8b8b8] focus-within:shadow-[1px_1px_0_#b8b8b8]">
                 <Search className="size-5 shrink-0" />
                 <input
                   value={query}
@@ -146,7 +147,7 @@ export default function HomePage() {
                 />
               </label>
               <button
-                className="hidden size-12 place-items-center rounded-2xl border-2 border-ink bg-yellow shadow-[3px_3px_0_#111] lg:grid"
+                className="hidden size-12 place-items-center rounded-2xl border-2 border-ink bg-yellow shadow-[3px_3px_0_#b8b8b8] lg:grid"
                 aria-label="通知"
               >
                 <Bell className="size-5" />
@@ -155,7 +156,7 @@ export default function HomePage() {
           </header>
 
           <div className="px-4 sm:px-7 lg:px-10">
-            <section className="relative mt-5 overflow-hidden rounded-[28px] border-2 border-ink bg-yellow p-5 shadow-[5px_5px_0_#111] sm:p-7">
+            <section className="relative mt-5 overflow-hidden rounded-[28px] border-2 border-ink bg-yellow p-5 shadow-[5px_5px_0_#b8b8b8] sm:p-7">
               <div className="relative z-10 max-w-lg">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-ink px-3 py-1.5 text-xs font-black text-yellow">
                   <Zap className="size-3.5 fill-current" /> 双向匹配上线
@@ -232,7 +233,7 @@ export default function HomePage() {
                   {visibleProducts.map((product) => (
                     <article
                       key={product.id}
-                      className="group overflow-hidden rounded-[22px] border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:border-ink hover:shadow-[4px_4px_0_#111]"
+                      className="group overflow-hidden rounded-[22px] border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:border-ink hover:shadow-[4px_4px_0_#b8b8b8]"
                     >
                       <div className="relative aspect-[4/3] overflow-hidden bg-muted">
                         <Link href={`/product/${product.id}`} className="block h-full w-full">
@@ -324,9 +325,7 @@ export default function HomePage() {
 function Brand() {
   return (
     <div className="flex items-center gap-2" aria-label="换么">
-      <span className="grid size-9 rotate-[-4deg] place-items-center rounded-xl border-2 border-ink bg-yellow text-xl font-black shadow-[2px_2px_0_#111]">
-        换
-      </span>
+      <BrandLogo className="size-10 rounded-[13px]" iconClassName="size-6" />
       <span className="text-xl font-black tracking-[-0.08em]">换么</span>
     </div>
   );
